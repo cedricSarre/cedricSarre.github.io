@@ -3,6 +3,9 @@ layout: post
 title: "La Heap Java pour les nuls, mais pas que..."
 ---
 
+![Illustration](/assets/images/gc.avif) 
+<div align="right"><a href="https://fr.freepik.com/vecteurs-libre/camion-recyclage-isole-illustration-vectorielle-fond-blanc_16312489.htm#query=camion%20poubelle&position=0&from_view=keyword&track=ais">Image de callmetak</a> sur Freepik</div> 
+
 ## Table des matières <!-- omit in toc -->
 
 1. [Introduction](#introduction)
