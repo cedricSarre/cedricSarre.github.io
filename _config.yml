@@ -18,8 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Le blog de Cédric
-email: sarre.cedric@gmail.com
+title: Simplicity is the eloquence of art
 description: >- # this means to ignore newlines until "baseurl:"
   Architecte logiciels orienté Java, j'ai toujours souhaité avoir mon propre blog pour diffuser des informations au plus grand nombre.
   Que vous soyez informaticien ou simple curieux, j'espère que le contenu vous plaira et que vous y trouverez les informations que vous cherchez.
