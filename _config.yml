@@ -25,6 +25,16 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cedricsarre.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  cedricSarre
+author: Cédric Sarre
+aMonPropos: |-
+  Architecte logiciels orienté Java, je suis passionné par les nouvelles technologies que je teste (PoC), que j'analyse et que je présente ensuite à d'autres collaborateurs. <br>
+  J'aime suivre des conférences telles que le Devoxx France, le Spring One, les webinar ElasticSearch, les BreizhJUG… <br>
+  J'apporte mes compétences Java en réalisant des audits de code pour différents clients. <br>
+  Je participe activement aux avant-ventes qui me sont proposées.<br>
+  J'imagine les futures architectures logicielles qui correspondent au mieux aux attentes clients. <br>
+  Je participe aux entretiens techniques en vue de renforcer les équipes de développements. C’est aussi un moyen pour moi de comprendre la mise en place de certaines solutions et d’apprendre. <br>
+  Je partage mes acquis avec les équipes via des formations, des retours d’expérience ou des présentations de PoC. <br>
+  A mon sens, un architecte logiciels se doit de faire de la veille technologique, d’être curieux, enthousiaste, de partager activement, et d’avoir de bonnes connaissances dans les différentes solutions d'hébergement (SAAS, PAAS, IAAS…) et dans les différents types d'architecture (Microservices, Hexagonale, Event-Driven, Monolithe Modulaire...) ; et ceci afin de réaliser des architectures logicielles les plus modernes, maintenables, durables et résilientes que possible.<br>
 
 # Build settings
 theme: minima
