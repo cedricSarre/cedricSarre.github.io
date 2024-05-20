@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>{{site.title}}</title>
+    
+    <!-- Meta -->
+	{% include meta.html %}
+	<!-- FontAwesome JS-->
+	<script defer src="/assets/css/fontawesome/js/all.min.js"></script>
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+    <div class="header text-center overflow-auto">
+	    <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="/index.html">Le Blog de Cédric</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="/assets/images/profile.jpeg" alt="image" >			
+					
+					<div class="bio mb-3">{{site.description}}</div><!--//bio-->
+					<ul class="social-list list-inline py-3 mx-auto">
+			            <li class="list-inline-item"><a href="https://www.linkedin.com/in/c%C3%A9dric-s-ba1372100/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="https://github.com/cedricSarre"><i class="fab fa-github-alt fa-fw"></i></a></li>
+			        </ul><!--//social-list-->
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-start">
+					<li class="nav-item">
+					    <a {% if page.url == "/" %}class='nav-link active'{% else %}class='nav-link'{% endif %} href="/index.html"><i class="fas fa-home fa-fw me-2"></i>Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					    <a {% if page.url == "/about.html" %}class='nav-link active'{% else %}class='nav-link'{% endif %}  href="/about.html"><i class="fas fa-user fa-fw me-2"></i>About Me</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+    </div>
+    
+    <div class="main-wrapper">
+        {{ content }}
+    </div><!--//main-wrapper-->
+       
+    <!-- Javascript -->          
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap/bootstrap.min.js"></script> 
+
+</body>
+</html> 
+
