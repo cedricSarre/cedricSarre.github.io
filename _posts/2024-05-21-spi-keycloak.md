@@ -64,8 +64,10 @@ Pour implémenter ce SPI, commençons par implémenter les interfaces qu'il four
 Concentrons-nous d'abord sur l'implémentation de notre nouvelle factory qui devra permettre à un administrateur Keycloak de pouvoir configurer l'URL du Backend.
 
 ```java
-public class CustomUserStorageProviderFactory implements UserStorageProviderFactory<MyCustomUserStorageProvider>{
+public class CustomUserStorageProviderFactory implements UserStorageProviderFactory<CustomUserStorageProvider>{
 
+    [...]
+    
     @Override
     public String getId(){
         return "CustomUserProvider";
@@ -119,22 +121,7 @@ Regardons plutôt comment implémenter notre *Provider*.
 ```java
 public class CustomUserStorageProvider implements UserStorageProvider, UserLookupProvider, CredentialInputValidator {
 
-    private final KeycloakSession session;
-    private final ComponentModel model;
-    private final CustomUserStorageService userService;
-    private final boolean resetPwd;
-
-    /**
-     * Attribut de l'utilisateur à récupérer depuis le backend et à stocker (peut permettre de faire le lien entre Keycloak et le backend en cas de problème sur ce compte) 
-     */
-    private static final String USER_ATTRIBUTE_ID = "USER_ID";
-
-    public CustomUserStorageProvider(KeycloakSession session, ComponentModel model, CustomUserStorageService userService, boolean resetPwd){
-        this.session = session;
-        this.model = model;
-        this.userService = userService;
-        this.resetPwd = resetPwd;
-    }
+    [...]
 
     @Override
     public UserModel getUserById(RealmModel realm, String id){
@@ -199,7 +186,7 @@ public class CustomUserStorageProvider implements UserStorageProvider, UserLooku
 
     protected UserModel createAdapter(RealmModel realm, String username){
         // On récupère l'utilisateur depuis le stockage local de Keycloak
-        UserModel localuser = UserStoragePrivateUtil.userLocalStorage(session).getUserByUsername(realm, username);
+        UserModel localUser = UserStoragePrivateUtil.userLocalStorage(session).getUserByUsername(realm, username);
 
         // Si l'utilisateur n'existe pas dans le stockage local de Keycloak, on doit l'initialiser
         if (localUser == null){
