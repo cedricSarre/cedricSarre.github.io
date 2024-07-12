@@ -233,5 +233,5 @@ Comme le montre l'image ci-dessous, vous retrouverez vos paramètres avec les va
 
 ![Step 4](/assets/2024/05/21/04-user-federation-details.png)
 
-Au final, c'est assez simple.  
-Ici, nous stockons les utilisateurs dans Keycloak, mais vous pourriez également imaginer de continuer à utiliser votre backend comme stockage de vos vieux utilisateurs, le tout en utilisant Keycloak comme gestionnaire d'identité pour vos nouveaux utilisateurs.
+Finalement, c'est assez simple.  
+Ici, nous stockons les utilisateurs dans Keycloak, mais vous pourriez également envisager de continuer à utiliser votre backend pour le stockage de vos anciens utilisateurs, le tout en utilisant Keycloak comme gestionnaire d'identité pour vos nouveaux utilisateurs.
