@@ -38,6 +38,8 @@ GEM
       sass-embedded (~> 1.54)
     jekyll-seo-tag (2.8.0)
       jekyll (>= 3.8, < 5.0)
+    jekyll-sitemap (1.4.0)
+      jekyll (>= 3.7, < 5.0)
     jekyll-spaceship (0.10.2)
       gemoji (~> 3.0)
       jekyll (>= 3.6, < 5.0)
@@ -91,6 +93,7 @@ DEPENDENCIES
   jekyll (~> 4.3.2)
   jekyll-feed (~> 0.12)
   jekyll-seo-tag (~> 2.6)
+  jekyll-sitemap
   jekyll-spaceship
   minima (~> 2.5)
   tzinfo (>= 1, < 3)

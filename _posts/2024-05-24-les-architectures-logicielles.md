@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Les Architectures Logicielles"
+description: "Le sujet de cet article est de présenter les principales architectures logicielles, avec en autre les architectures Monolithiques Traditionnelles, Hexagonales, Domain-Driven-Design, Microservices, Modulaires, Orientées Évènements ou encore en Couches."
 resume: "Le sujet de cet article est de présenter les principales architectures logicielles, avec en autre les 
-architectures Monolithiques Traditionnelles, Hexagonales, Domain-Driven-Design, Microservices, Modulaires, Orientées Évènements ou encore 
-en Couches."
+architectures Monolithiques Traditionnelles, Hexagonales, Domain-Driven-Design, Microservices, Modulaires, Orientées Évènements ou encore en Couches."
 image: "/assets/images/softwareArchitectures.jpg"
 imageCopyright: "https://fr.freepik.com/"
 imageDe: Designed by vectorjuice / Freepik

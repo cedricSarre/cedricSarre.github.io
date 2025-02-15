@@ -18,14 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Simplicity is the eloquence of art
+title: "Simplicity is the eloquence of art"
 description: >- # this means to ignore newlines until "baseurl:"
   Architecte logiciels orienté Java, j'ai toujours souhaité avoir mon propre blog pour diffuser des informations au plus grand nombre.
   Que vous soyez informaticien ou simple curieux, j'espère que le contenu vous plaira et que vous y trouverez les informations que vous cherchez.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cedricsarre.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  cedricSarre
-author: Cédric Sarre
+author: "Cédric Sarre"
 aMonPropos: |-
   Architecte logiciels orienté Java, je suis passionné par les nouvelles technologies que je teste (PoC), que j'analyse et que je présente ensuite à d'autres collaborateurs. <br>
   J'aime suivre des conférences telles que le Devoxx France, le Spring One, les webinar ElasticSearch, les BreizhJUG… <br>
@@ -35,12 +35,14 @@ aMonPropos: |-
   Je participe aux entretiens techniques en vue de renforcer les équipes de développements. C’est aussi un moyen pour moi de comprendre la mise en place de certaines solutions et d’apprendre. <br>
   Je partage mes acquis avec les équipes via des formations, des retours d’expérience ou des présentations de PoC. <br>
   A mon sens, un architecte logiciels se doit de faire de la veille technologique, d’être curieux, enthousiaste, de partager activement, et d’avoir de bonnes connaissances dans les différentes solutions d'hébergement (SAAS, PAAS, IAAS…) et dans les différents types d'architecture (Microservices, Hexagonale, Event-Driven, Monolithe Modulaire...) ; et ceci afin de réaliser des architectures logicielles les plus modernes, maintenables, durables et résilientes que possible.<br>
+permalink: /:title/
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "La Heap Java pour les nuls, mais pas que... Round 2"
-resume: "Dans ce nouvel article, je vous propose de voir en détail le fonctionnement des Garbage Collectors les plus utilisés, CMS et G1GC."
+description: "Dans ce nouvel article, je vous propose de voir en détail le fonctionnement des Garbage Collectors les plus utilisés, CMS et G1GC."
+resume: "Dans ce nouvel article, je vous propose de voir en détail le fonctionnement des Garbage Collectors les plus 
+utilisés, CMS et G1GC."
 image: "/assets/images/gc2.jpg"
 imageCopyright: "https://fr.freepik.com/vecteurs-libre/camion-poubelle-vecteur-isole-blanc_11296330.htm"
 imageDe: Image de callmetak sur Freepik
