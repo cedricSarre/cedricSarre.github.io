@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Spring Modulith ou comment redonner vie à l'Architecture Monolithique"
+description: "Le sujet de cet article est de montrer que l'Architecture Monolithique Modulaire peut offrir un compromis élégant entre la simplicité de l'architecture Monolithique, le découplage du Domain-Driven-Design et la modularité des architectures distribuées."
 resume: "Le sujet de cet article est de montrer que l'Architecture Monolithique Modulaire peut offrir un compromis 
-élégant entre la simplicité de l'architecture Monolithique, le découplage du Domain-Driven-Design et la 
-modularité des architectures distribuées."
+élégant entre la simplicité de l'architecture Monolithique, le découplage du Domain-Driven-Design et la modularité des architectures distribuées."
 image: "/assets/images/spring-modulith.jpg"
 readTime: "15"
 excerpt: Spring Modulith monolithique monolithic modularity modulaire architecture hexagonale events DDD java

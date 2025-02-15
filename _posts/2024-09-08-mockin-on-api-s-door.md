@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Mockin' On API's Door"
-resume: "Le sujet de cet article est de présenter trois des principales solutions pour mocker vos API REST : 
-WireMock, MockServer et OpenAPI Mock. Lequel a le plus de fonctionnalités ? Lequel est le plus simple à mettre en 
-place et à utiliser ? Lequel tire son épingle du jeu ?"
+description: "Le sujet de cet article est de présenter trois des principales solutions pour mocker vos API REST : WireMock, MockServer et OpenAPI Mock. Lequel a le plus de fonctionnalités ? Lequel est le plus simple à mettre en place et à utiliser ? Lequel tire son épingle du jeu ?"
+resume: "Le sujet de cet article est de présenter trois des principales solutions pour mocker vos API REST : WireMock, 
+MockServer et OpenAPI Mock. Lequel a le plus de fonctionnalités ? Lequel est le plus simple à mettre en place et à utiliser ? Lequel tire son épingle du jeu ?"
 image: "/assets/images/mocks.webp"
 readTime: "15"
 excerpt: mock REST Wiremock MockServer OpenAPI java

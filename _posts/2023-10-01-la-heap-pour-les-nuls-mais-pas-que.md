@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "La Heap Java pour les nuls, mais pas que..."
-resume: "Dans cet article, je vous propose de découvrir de façon simplifiée le fonctionnement de la gestion de la Heap par le Garbage Collector, de connaître les différents algorithmes utilisés par les différents Garbage Collectors, et savoir choisir le Garbage Collector le plus adapté à ses besoins."
+description: "Dans cet article, je vous propose de découvrir de façon simplifiée le fonctionnement de la gestion de la Heap par le Garbage Collector, de connaître les différents algorithmes utilisés par les différents Garbage Collectors, et savoir choisir le Garbage Collector le plus adapté à ses besoins."
+resume: "Dans cet article, je vous propose de découvrir de façon simplifiée le fonctionnement de la gestion de la Heap 
+par le Garbage Collector, de connaître les différents algorithmes utilisés par les différents Garbage Collectors, et savoir choisir le Garbage Collector le plus adapté à ses besoins."
 image: "/assets/images/gc.jpg"
 imageCopyright: "https://fr.freepik.com/vecteurs-libre/camion-recyclage-isole-illustration-vectorielle-fond-blanc_16312489.htm"
 imageDe: Image de callmetak sur Freepik

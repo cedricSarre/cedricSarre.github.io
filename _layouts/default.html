@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": "{{ page.title }}",
+		"author": {
+			"@type": "Person",
+			"name": "{{ site.author }}"
+		},
+		"datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
+		"dateModified": "{{ page.last_modified_at | date: '%Y-%m-%d' }}",
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "{{ site.url }}{{ page.url }}"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "{{ site.title }}",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "{{ site.url }}/images/logo.png"
+			}
+		},
+		"description": "{{ page.excerpt | strip_html | truncatewords: 30 }}",
+		"image": "{{ site.url }}/images/{{ page.image }}"
+	}
+</script>
 <head>
-    <title>{{site.title}}</title>
-    
+	<title>
+		{% if page.title %}
+		{{ page.title }} - {{ site.title }}
+		{% else %}
+		{{ site.title }}
+		{% endif %}
+	</title>
+
     <!-- Meta -->
-	{% include meta.html %}
+	<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+	<meta name="author" content="{{ site.author }}">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Language" content="fr">
+	<meta name="google-site-verification" content="Zb7CRFK4ubiouaeow1Ca5HZECZvLh6fnUo7dxgLrTA4" />
+
 	<!-- FontAwesome JS-->
 	<script defer src="/assets/css/fontawesome/js/all.min.js"></script>
     <!-- Theme CSS -->  
@@ -13,8 +51,8 @@
 
 <body>
     <div class="header text-center overflow-auto">
-	    <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="/index.html">Le Blog de Cédric</a></h1>
-        
+	    <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="/index.html">Architecture Logicielle et Développement Java</a></h1>
+
 	    <nav class="navbar navbar-expand-lg navbar-dark" >
            
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">

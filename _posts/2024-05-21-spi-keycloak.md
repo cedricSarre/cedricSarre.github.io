@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Keycloak et la fédération d'identité à travers un SPI custom"
-resume: "Le sujet de cet article est de présenter une des fonctionnalités fournie par Keycloak, le SPI ou Service Provider Interface."
+description: "Le sujet de cet article est de présenter une des fonctionnalités fournie par Keycloak, le SPI ou Service Provider Interface."
+resume: "Le sujet de cet article est de présenter une des fonctionnalités fournie par Keycloak, le SPI ou Service 
+Provider Interface."
 image: "/assets/images/keycloak-spi.png"
 readTime: "15"
 excerpt: keycloak SPI java fédération
