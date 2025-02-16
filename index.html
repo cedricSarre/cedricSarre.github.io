@@ -3,9 +3,13 @@ layout: default
 title: cedricSarre.github.io
 excerpt: Cédric SARRE Architecte Logiciels Java
 --- 
-<section class="cta-section theme-bg-light py-5">
+<section class="cta-section py-5">
 	<div class="container text-center single-col-max-width">
 		<h2 class="heading">{{site.title}}</h2>
+		<!-- Bouton du mode sombre/clair -->
+		<button id="theme-toggle" class="btn btn-outline-secondary" type="button">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 	</div><!--//container-->
 </section>
 	    
@@ -14,7 +18,7 @@ excerpt: Cédric SARRE Architecte Logiciels Java
 		{% for post in site.posts %}
 			<div class="item mb-5">
 				<div class="row g-3 g-xl-0">
-					<div class="col-2 col-xl-3">
+					<div class="col-2">
 						<img class="img-fluid post-thumb " src="{{post.image}}" alt="image">
 						<div class="meta mb-1">
 							<a href={{post.imageCopyright}}>{{post.imageDe}}</a>

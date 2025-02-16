@@ -45,7 +45,7 @@
 
 	<!-- FontAwesome JS-->
 	<script defer src="/assets/css/fontawesome/js/all.min.js"></script>
-    <!-- Theme CSS -->  
+    <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/assets/css/main.css">
 </head>
 
@@ -89,8 +89,36 @@
        
     <!-- Javascript -->          
     <script src="/assets/js/popper.min.js"></script>
-    <script src="/assets/js/bootstrap/bootstrap.min.js"></script> 
+    <script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.getElementById("theme-toggle");
+            const body = document.body;
+            const currentTheme = localStorage.getItem("theme");
 
+		    // Vérifie si le mode sombre est activé et met à jour le bouton
+			if (currentTheme === "dark") {
+				body.classList.add("dark-mode");
+				toggleButton.textContent = "☀️"; // Affiche l'icône de soleil quand en mode sombre
+				toggleButton.classList.add("dark-mode-btn"); // Applique une classe pour le bouton en mode sombre
+			} else {
+				toggleButton.textContent = "🌙"; // Affiche l'icône de lune quand en mode clair
+				toggleButton.classList.remove("dark-mode-btn"); // Retire la classe en mode clair
+			}
+
+			// Fonction qui bascule entre le mode clair et sombre
+			toggleButton.addEventListener("click", function () {
+				body.classList.toggle("dark-mode");
+				if (body.classList.contains("dark-mode")) {
+					localStorage.setItem("theme", "dark");
+					toggleButton.textContent = "☀️"; // Changer l'icône en mode sombre
+				} else {
+					localStorage.setItem("theme", "light");
+					toggleButton.textContent = "🌙"; // Changer l'icône en mode clair
+				}
+			});
+        });
+	</script>
 </body>
 </html> 
 

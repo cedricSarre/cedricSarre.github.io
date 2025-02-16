@@ -156,8 +156,8 @@
 			background-color: #808fa3;
 			//color: white;
 		}
-		tr:nth-child(even){
-		    background-color: #e8ecf2;
-		}
+        overflow-x: scroll;
+        max-width: $single-col-max-width;
+        display: block;
 	}
 }
