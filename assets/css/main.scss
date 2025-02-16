@@ -2,3 +2,69 @@
 ---
 @import "theme";
 @import "github.css";
+
+/* Styles par défaut (mode clair) */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #007bff;
+}
+
+/* Mode sombre */
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --link-color: #1e90ff;
+}
+
+/* Appliquer les couleurs */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: var(--link-color);
+}
+
+body {
+    background-color: #fff; /* Fond clair */
+    color: #000; /* Texte sombre */
+}
+
+/* Mode sombre */
+body.dark-mode{
+    .main-wrapper, h1, h2, h3, h4, h5, h6, .blog-list, .item .title a.text-link{
+        background-color: #121212; /* Fond sombre */
+        color: #e0e0e0; /* Texte clair */
+    }
+    .highlight{
+        background-color: #f2f5f3; /* Fond clair */
+    }
+}
+
+/* Changer les couleurs des liens en mode sombre */
+body.dark-mode a{
+    color: #1e90ff; /* Liens clairs */
+}
+
+body.dark-mode a:hover {
+    color: #ff6347; /* Changer la couleur des liens au survol */
+}
+
+/* Changer l'arrière-plan du header */
+body.dark-mode .header {
+    background-color: #222; /* Fond sombre pour le header */
+}
+
+/* Modifier les couleurs des boutons en mode sombre */
+body.dark-mode #theme-toggle {
+    background-color: #555; /* Bouton sombre */
+    color: #fff; /* Texte clair pour le bouton */
+}
+
+/* Personnaliser encore d'autres éléments si nécessaire */
+body.dark-mode .navbar {
+    background-color: #222; /* Navbar sombre */
+}
