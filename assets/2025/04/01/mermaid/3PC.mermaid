@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant Client
+    participant ServiceCommande
+    participant ServiceStock
+    participant ServicePaiement
+    participant ServiceLivraison
+    participant Coordinateur
+
+    Client->>ServiceCommande: Passe une commande
+    ServiceCommande->>Coordinateur: Démarre une transaction 3PC
+    Coordinateur->>ServiceStock: Tu peux préparer la réservation du stock ?
+    ServiceStock-->>Coordinateur: Oui
+    Coordinateur->>ServicePaiement: Tu peux préparer le paiement ?
+    ServicePaiement-->>Coordinateur: Oui
+    Coordinateur->>ServiceLivraison: Tu peux préparer la livraison ?
+    ServiceLivraison-->>Coordinateur: Oui
+
+    alt Tous les services sont prêts
+        Coordinateur->>ServiceStock: Prépare la réservation du stock
+        Coordinateur->>ServicePaiement: Prépare le paiement
+        Coordinateur->>ServiceLivraison: Prépare la livraison
+        Coordinateur->>ServiceStock: Réserve
+        Coordinateur->>ServicePaiement: Valide le paiement
+        Coordinateur->>ServiceLivraison: Valide la livraison
+        Coordinateur-->>ServiceCommande: Transaction terminée
+        ServiceCommande-->>Client: Commande validée
+    else Une erreur ou timeout
+        Coordinateur->>ServiceStock: Annuler
+        Coordinateur->>ServicePaiement: Annuler
+        Coordinateur->>ServiceLivraison: Annuler
+        Coordinateur-->>ServiceCommande: Transaction échouée
+        ServiceCommande-->>Client: Commande échouée
+    end

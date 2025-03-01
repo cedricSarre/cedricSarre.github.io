@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Client
+    participant ServiceCommande
+    participant Database
+    participant MessageRelay
+    participant ServiceStock
+    participant ServicePaiement
+    participant ServiceLivraison
+
+    Client->>ServiceCommande: Passe une commande
+    ServiceCommande->>Database: Crée une commande et insère un événement dans l'outbox
+    Database-->>ServiceCommande: Confirme la transaction
+    MessageRelay->>Database: Lit l'outbox
+    MessageRelay->>ServiceStock: Émet un événement "Commande créée"
+    ServiceStock-->>MessageRelay: Répond "Stock réservé"
+    MessageRelay->>ServicePaiement: Émet un événement "Paiement demandé"
+    ServicePaiement-->>MessageRelay: Répond "Paiement validé"
+    MessageRelay->>ServiceLivraison: Émet un événement "Livraison planifiée"
+    ServiceLivraison-->>MessageRelay: Répond "Livraison confirmée"
+    MessageRelay->>ServiceCommande: Notifie "Commande terminée"
+    ServiceCommande-->>Client: Confirmation de la commande

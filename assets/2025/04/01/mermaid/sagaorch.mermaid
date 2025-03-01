@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Client
+    participant Orchestrateur
+    participant ServiceStock
+    participant ServicePaiement
+    participant ServiceLivraison
+
+    Client->>Orchestrateur: Passe une commande
+    Orchestrateur->>ServiceStock: Réserver le stock
+    alt Stock disponible
+        ServiceStock-->>Orchestrateur: Stock réservé
+        Orchestrateur->>ServicePaiement: Débiter le paiement
+        alt Paiement réussi
+            ServicePaiement-->>Orchestrateur: Paiement débité
+            Orchestrateur->>ServiceLivraison: Planifier la livraison
+            ServiceLivraison-->>Orchestrateur: Livraison planifiée
+            Orchestrateur-->>Client: Commande validée
+        else Paiement échoué
+            Orchestrateur->>ServiceStock: Annuler la réservation
+            Orchestrateur-->>Client: Commande échouée
+        end
+    else Stock indisponible
+        Orchestrateur-->>Client: Commande échouée
+    end
