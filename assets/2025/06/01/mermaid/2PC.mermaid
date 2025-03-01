@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant Client
+    participant ServiceCommande
+    participant ServiceStock
+    participant ServicePaiement
+    participant ServiceLivraison
+    participant Coordinateur
+
+    Client->>ServiceCommande: Passe une commande
+    ServiceCommande->>Coordinateur: Démarre une transaction 2PC
+    Coordinateur->>ServiceStock: Prépare la réservation du stock
+    ServiceStock-->>Coordinateur: Stock préparé
+    Coordinateur->>ServicePaiement: Prépare le paiement
+    ServicePaiement-->>Coordinateur: Paiement préparé
+    Coordinateur->>ServiceLivraison: Prépare la livraison
+    ServiceLivraison-->>Coordinateur: Livraison préparée
+
+    alt Tous les services sont prêts
+        Coordinateur->>ServiceStock: Valide la réservation
+        Coordinateur->>ServicePaiement: Valide le paiement
+        Coordinateur->>ServiceLivraison: Valide la livraison
+        Coordinateur-->>ServiceCommande: Transaction terminée
+        ServiceCommande-->>Client: Commande validée
+    else Une erreur se produit
+        Coordinateur->>ServiceStock: Annule la réservation
+        Coordinateur->>ServicePaiement: Annule le paiement
+        Coordinateur->>ServiceLivraison: Annule la livraison
+        Coordinateur-->>ServiceCommande: Transaction échouée
+        ServiceCommande-->>Client: Commande échouée
+    end

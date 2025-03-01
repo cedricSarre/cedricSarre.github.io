@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Client
+    participant ServiceCommande
+    participant MessageBroker
+    participant ServiceStock
+    participant ServicePaiement
+    participant ServiceLivraison
+
+    Client->>ServiceCommande: Passe une commande
+    ServiceCommande->>MessageBroker: Émet un événement "Commande créée"
+    MessageBroker->>ServiceStock: Stocker et traiter "Commande créée"
+    ServiceStock-->>MessageBroker: Confirme la réservation du stock
+    MessageBroker->>ServicePaiement: Débiter le paiement
+    ServicePaiement-->>MessageBroker: Confirme le paiement
+    MessageBroker->>ServiceLivraison: Planifier la livraison
+    ServiceLivraison-->>MessageBroker: Confirme la livraison
+    MessageBroker->>ServiceCommande: Notifie "Commande terminée"
+    ServiceCommande-->>Client: Confirmation de la commande
