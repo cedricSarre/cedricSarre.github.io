@@ -67,4 +67,7 @@ body.dark-mode #theme-toggle {
 /* Personnaliser encore d'autres éléments si nécessaire */
 body.dark-mode .navbar {
     background-color: #222; /* Navbar sombre */
+    h1 {
+        background-color: #222; /* Liens clairs dans la navbar */
+    }
 }
