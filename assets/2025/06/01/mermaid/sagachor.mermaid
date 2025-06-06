@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant Client
+    participant ServiceCommande
+    participant ServiceStock
+    participant ServicePaiement
+    participant ServiceLivraison
+
+    Client->>ServiceCommande: Passe une commande
+    ServiceCommande->>ServiceStock: Réserver le stock
+    ServiceStock-->>ServiceCommande: Stock réservé
+    ServiceCommande->>ServicePaiement: Débiter le paiement
+    alt Paiement réussi
+        ServicePaiement-->>ServiceCommande: Paiement débité
+        ServiceCommande->>ServiceLivraison: Planifier la livraison
+        ServiceLivraison-->>ServiceCommande: Livraison planifiée
+        ServiceCommande-->>Client: Commande validée
+    else Paiement échoué
+        ServicePaiement-->>ServiceCommande: Paiement refusé
+        ServiceCommande->>ServiceStock: Annuler la réservation
+        ServiceStock-->>ServiceCommande: Réservation annulée
+        ServiceCommande-->>Client: Commande échouée
+    end
