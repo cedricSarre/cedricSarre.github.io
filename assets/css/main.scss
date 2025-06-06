@@ -65,9 +65,12 @@ body.dark-mode #theme-toggle {
 }
 
 /* Personnaliser encore d'autres éléments si nécessaire */
-body.dark-mode .navbar {
-    background-color: #222; /* Navbar sombre */
-    h1 {
-        background-color: #222; /* Liens clairs dans la navbar */
+body.dark-mode{
+    h1.blog-name{
+        background-color: #222;
+    }
+    .navbar {
+        background-color: #222; /* Navbar sombre */
+        width: min-content;
     }
 }
