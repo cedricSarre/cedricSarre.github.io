@@ -46,7 +46,7 @@ Sa promesse ? Réduire le temps des upgrades techniques de plusieurs jours à qu
 ## Comment ça marche ?
 
 OpenRewrite fonctionne en modifiant ce qu'ils appellent des arbres sémantiques sans perte ([LST](https://docs.openrewrite.org/concepts-and-explanations/lossless-semantic-trees)) représentant votre code source, puis en modifiant ces arbres et en les réintégrant dans votre code.  
-Pour vulgariser, LST est une représentation arborescente de votre code.  
+Pour vulgariser, une LST est une structure arborescente qui représente la façon dont le code est compris et analysé par un interpréteur ou un compilateur.
 
 Le concept vous parait compliqué ? Voyez le LST comme un AST (Abstract Syntax Tree) mais enrichi : avec les attributs de type et le format (espaces avant/après etc) qui permet un rendu, après transformation de votre code, identique à l'origine. Les modifications sur les LST sont réalisées dans un ou plusieurs visiteurs (*Pattern Visitor*), eux-mêmes regroupés en recettes (*recipes*).
 
@@ -54,13 +54,13 @@ Voici une illustration assez simple que propose OpenRewrite sur son site :
 
 ![LST](/assets/2025/07/09/LST.png)
 
-Principalement conçu pour Java, OpenRewrite est capable de traiter d'autres langages comme Kotlin, Groovy, XML, YAML, JSON, SQL... Mais pour la suite, nous nous focaliserons principalement sur Java (avec un soupçon de YAML et de XML).
+Principalement conçu pour Java, OpenRewrite est capable de traiter d'autres langages comme Kotlin, Groovy, XML, YAML, JSON, SQL... Mais pour la suite, je me focaliserai sur Java (avec un soupçon de YAML et de XML).
 
 OK, c'est bien beau tout ça, mais comment je l'intègre dans mon projet et comment je dois m'en servir ?
 
 ## Intégration par l'exemple
 
-Pour bien comprendre ce que vous apporte OpenRewrite, nous allons l'intégrer dans un projet Java ([disponible ici](https://github.com/cedricSarre/open-rewrite-sample)) basé sur les technonolgies suivantes, que vous retrouverez dans la branche *main* :
+Pour bien comprendre ce que vous apporte OpenRewrite, nous allons l'intégrer dans un projet Java ([disponible ici](https://github.com/cedricSarre/open-rewrite-sample)) basé sur les technologies suivantes, que vous retrouverez dans la branche *main* :
 
 * Java 8
 * Spring Boot 2
@@ -145,7 +145,7 @@ Enfin, la recette Mockito 5 a besoin de celle-ci :
 </dependency>
 ```
 
-Une fois cette configuration - honnêtement très rapide - réalisée, vous n'avez plus qu'à exécuter le plugin OpenRewrite via la commande `mvn rewrite:run`.
+Une fois cette configuration - honnêtement très rapide - réalisée, nous n'avons plus qu'à exécuter le plugin OpenRewrite via la commande `mvn rewrite:run`.
 
 Analysons ensuite les logs du build pour la partie migration vers Java 21 :
 
@@ -300,9 +300,9 @@ et
 
 Première chose à faire, écrire notre `pom.xml`. On va avoir besoin des dépendances `rewrite-java-21`, `rewrite-test`, `rewrite-testing-frameworks` et de `junit-bom`.
 
-A première vue, coder une recette est assez simple, on doit étendre la classe `Recipe` et implémenter quelques méthodes : `getDisplayName()`, `getDescription()` et `getVisitor()`.  
-Les deux premières, vous l'aurez compris, sont simples.  
-La dernière en revanche doit contenir notre algorithme. Celle-ci va devoir retourner un `TreeVisitor<?, ExecutionContext>` — ici, une instance d'une classe anonyme qui hérite de `JavaIsoVisitor<>`, et il faut choisir les bonnes méthodes à implémenter en fonction de notre use-case. Nous savons déjà que nous souhaitons ajouter une annotation à chacune de nos classes de tests et y ajouter l'import qui convient. Nous allons donc implémenter les méthodes `visitCompilationUnit()` et `visitClassDeclaration`.
+À première vue, coder une recette est assez simple, on doit étendre la classe `Recipe` et implémenter quelques méthodes : `getDisplayName()`, `getDescription()` et `getVisitor()`.  
+Vous l'aurez compris, les deux premières sont simples.  
+La dernière, en revanche, doit contenir notre algorithme. Celle-ci va devoir retourner un `TreeVisitor<?, ExecutionContext>` — ici, une instance d'une classe anonyme qui hérite de `JavaIsoVisitor<>` — et il faut choisir les bonnes méthodes à implémenter en fonction de notre use-case. Nous savons déjà que nous souhaitons ajouter une annotation à chacune de nos classes de tests et y ajouter l'import qui convient. Nous allons donc implémenter les méthodes `visitCompilationUnit()` et `visitClassDeclaration`.
 
 La méthode `visitCompilationUnit()` est appelée au tout début de la visite d'un fichier Java. C'est au sein de celle-ci que nous pouvons analyser et/ou modifier les imports, les annotations de classes, les packages...
 
@@ -310,17 +310,17 @@ La méthode `visitClassDeclaration` est appelée à chaque fois qu'une classe es
 
 En d’autres termes, la première vous fait entrer dans Khazad-dûm, le vaste royaume des Nains, et la seconde vous guide à travers ses grandes salles, où reposent les secrets enfouis du code : les classes.
 
-Mais pour commencer notre quête, il nous faut d’abord identifier les classes qui nous intéressent : les classes de tests. Facile, en général elles se trouvent dans `src/test` et suivent le pattern `*\*Test.java*`. On s'assure également qu'elles contiennent au moins une méthode annotée `@Test`.
+Mais pour commencer notre quête, il nous faut d’abord identifier les classes qui nous intéressent : les classes de tests. Facile, en général, elles se trouvent dans `src/test` et suivent le pattern `*\*Test.java*`. On s'assure également qu'elles contiennent au moins une méthode annotée `@Test`.
 
 Ensuite, on va différencier les classes de tests d'intégration des classes de tests unitaires. La méthode que nous avons choisie repose sur la recherche d'une annotation de la classe elle-même : si celle-ci est annotée par une des annotations suivantes, on en conclut que c'est une classe de tests d'intégration : `@SpringBootTest`, `@DataJpaTest`, `@WebMvcTest`, `@WebFluxTest`, `@JdbcTest`, `@DataMongoTest`, `@DataRedisTest`, `@DataCassandraTest`, `@RestClientTest`. Cette liste n'est sans doute pas exhaustive, mais dans notre cas, on prendra comme hypothèse que c'est suffisant.
 
 On vérifie également que cette classe ne contient pas déjà l'annotation `@Tag` et l'import associé `org.junit.jupiter.api.Tag`. Ensuite, on ajoute l'annotation `@Tag("unit")` ou `@Tag("integration")` et l'import.
 
-Notre recette est terminée, mais nous vous conseillons de réaliser une dernière chose importante, ajouter des tests unitaires pour valider celle-ci.
+Notre recette est terminée, mais je vous conseille de réaliser une dernière chose importante, ajouter des tests unitaires pour valider celle-ci.
 
 On compile, on génère le jar et en route pour l'intégration dans notre projet !
 
-Là, encore rien de plus simple, ajoutez la recette à la liste déjà présente
+Là, encore rien de plus simple, ajoutons la recette à la liste déjà présente
 
 ```xml
 <activeRecipes>
@@ -338,9 +338,9 @@ et la dépendance vers la recette
 </dependency>
 ```
 
-Une chose à savoir cependant. Votre recette utilise des éléments de JUnit5, il faut donc que votre déclaration de plugin OpenRewrite contienne la dépendance vers JUnit5.
+Une chose à savoir cependant. Notre recette utilise des éléments de JUnit5, il faut donc que votre déclaration de plugin OpenRewrite contienne la dépendance vers JUnit5.
 
-Relancez la commande `mvn rewrite:run` et... votre application est upgradée, et tous vos tests sont annotés 😍
+Relançons la commande `mvn rewrite:run` et... notre application est upgradée, et tous nos tests sont annotés 😍
 
 > **💡Tips**  
 > [Retrouvez le code de cette recette](https://github.com/cedricSarre/add-test-tag-open-rewrite-recipe)  
