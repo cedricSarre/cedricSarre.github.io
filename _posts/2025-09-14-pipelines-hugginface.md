@@ -3,7 +3,7 @@ layout: post
 title: "Hugging Face, LA plateforme qui démocratise l’intelligence artificielle !"
 description: "Dans cet article, nous allons découvrir comment exploiter les modèles de langage de Hugging Face, comment choisir des modèles adaptés à vos besoins, et comment intégrer ces derniers dans vos projets de développement."
 resume: "Dans cet article, nous allons découvrir comment exploiter les modèles de langage de Hugging Face, comment choisir des modèles adaptés à vos besoins, et comment intégrer ces derniers dans vos projets de développement."
-image: "image: /assets/images/hugging_face.jpg"
+image: "/assets/images/hugging_face.svg"
 readTime: "15"
 excerpt: IA intelligence artificielle SLM LLM Hugging Face Transformers CPU GPU Python Java Modèle pré-entraîné fine-tuning
 ---
